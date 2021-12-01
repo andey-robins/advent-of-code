@@ -2,29 +2,26 @@ package dayOne
 
 import (
 	"fmt"
-	"log"
+
+	"github.com/andey-robins/advent-of-code/sub"
+	"github.com/andey-robins/advent-of-code/utils"
 )
 
 func Run() {
-	var i int
-	fmt.Println("Enter 1 for part one and anything else for part 2")
-	_, err := fmt.Scanf("%d", &i)
-	if err != nil {
-		log.Fatalln(err)
-	}
-	fmt.Printf("\n\n")
 
-	if i == 1 {
-		partOne()
-	} else {
-		partTwo()
-	}
+	test()
+
+	lines := utils.ReadFile("dayOne/input.txt")
+	readings := utils.LinesToInt(lines)
+
+	fmt.Printf("Part one answer: %v\n", sub.CountDepthIncreases(readings, 1))
+	fmt.Printf("Part two answer: %v\n", sub.CountDepthIncreases(readings, 3))
 }
 
-func partOne() {
-	fmt.Println("Part 1")
-}
+func test() {
+	lines := utils.ReadFile("dayOne/example.txt")
+	readings := utils.LinesToInt(lines)
 
-func partTwo() {
-	fmt.Println("Part 2")
+	fmt.Printf("Example test input yields: %v\n", sub.CountDepthIncreases(readings, 1))
+	fmt.Printf("Example sliding window:    %v\n", sub.CountDepthIncreases(readings, 3))
 }

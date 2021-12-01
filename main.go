@@ -5,6 +5,7 @@ import (
 	"log"
 
 	"github.com/andey-robins/advent-of-code/dayOne"
+	"github.com/andey-robins/advent-of-code/dayTwo"
 )
 
 func main() {
@@ -18,5 +19,7 @@ func main() {
 	switch i {
 	case 1:
 		dayOne.Run()
+	case 2:
+		dayTwo.Run()
 	}
 }
