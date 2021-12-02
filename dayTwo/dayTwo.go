@@ -14,8 +14,11 @@ func Run() {
 
 	input := utils.ReadFile("./dayTwo/input.txt")
 
-	partOne(input)
-	partTwo(input)
+	one := PartOne(input)
+	two := PartTwo(input)
+
+	fmt.Printf("Part One Answer: %v\n", one)
+	fmt.Printf("Part Two Answer: %v\n", two)
 }
 
 func test() {
@@ -50,7 +53,7 @@ func test() {
 	fmt.Printf("Example sub result       : 900 == %v\n", testSub.GetDepth()*testSub.GetPosition())
 }
 
-func partOne(input []string) {
+func PartOne(input []string) int {
 
 	sub := sub.NewSimpleSub()
 
@@ -69,10 +72,10 @@ func partOne(input []string) {
 		}
 	}
 
-	fmt.Printf("Part One Answer: %v\n", sub.GetDepth()*sub.GetPosition())
+	return sub.GetDepth() * sub.GetPosition()
 }
 
-func partTwo(input []string) {
+func PartTwo(input []string) int {
 
 	sub := sub.NewSub()
 
@@ -91,5 +94,5 @@ func partTwo(input []string) {
 		}
 	}
 
-	fmt.Printf("Part Two Answer: %v\n", sub.GetDepth()*sub.GetPosition())
+	return sub.GetDepth() * sub.GetPosition()
 }
