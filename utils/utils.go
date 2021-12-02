@@ -5,9 +5,10 @@ import (
 	"log"
 	"os"
 	"strconv"
+	"strings"
 )
 
-func check(err error) {
+func Check(err error) {
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -15,7 +16,7 @@ func check(err error) {
 
 func ReadFile(fname string) []string {
 	file, err := os.Open(fname)
-	check(err)
+	Check(err)
 	defer file.Close()
 
 	contents := make([]string, 0)
@@ -36,8 +37,30 @@ func LinesToInt(lines []string) []int {
 	vals := make([]int, 0)
 	for _, line := range lines {
 		num, err := strconv.Atoi(line)
-		check(err)
+		Check(err)
 		vals = append(vals, num)
 	}
 	return vals
+}
+
+func LinesToStringInt(lines []string) ([]string, []int) {
+	ss := make([]string, 0)
+	is := make([]int, 0)
+
+	for _, line := range lines {
+		s, i := SingleLineToStringInt(line)
+		ss = append(ss, s)
+		is = append(is, i)
+	}
+	return ss, is
+}
+
+func SingleLineToStringInt(line string) (string, int) {
+	splitLine := strings.Split(line, " ")
+
+	s := splitLine[0]
+	i, err := strconv.Atoi(splitLine[1])
+	Check(err)
+
+	return s, i
 }

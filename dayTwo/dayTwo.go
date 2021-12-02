@@ -2,29 +2,94 @@ package dayTwo
 
 import (
 	"fmt"
-	"log"
+	"strconv"
+	"strings"
+
+	"github.com/andey-robins/advent-of-code/sub"
+	"github.com/andey-robins/advent-of-code/utils"
 )
 
 func Run() {
-	var i int
-	fmt.Println("Enter 1 for part one and anything else for part 2")
-	_, err := fmt.Scanf("%d", &i)
-	if err != nil {
-		log.Fatalln(err)
-	}
-	fmt.Printf("\n\n")
+	test()
 
-	if i == 1 {
-		partOne()
-	} else {
-		partTwo()
-	}
+	input := utils.ReadFile("./dayTwo/input.txt")
+
+	partOne(input)
+	partTwo(input)
 }
 
-func partOne() {
-	fmt.Println("Part 1")
+func test() {
+	input := utils.ReadFile("./dayTwo/example.txt")
+
+	testSimpleSub := sub.NewSimpleSub()
+	testSub := sub.NewSub()
+
+	for _, line := range input {
+		splitLine := strings.Split(line, " ")
+
+		move := splitLine[0]
+		dist, err := strconv.Atoi(splitLine[1])
+		utils.Check(err)
+
+		switch move {
+		case "up":
+			testSimpleSub.Rise(dist)
+			testSub.AimUp(dist)
+		case "down":
+			testSimpleSub.Dive(dist)
+			testSub.AimDown(dist)
+		case "forward":
+			testSimpleSub.Forward(dist)
+			testSub.Forward(dist)
+		default:
+			fmt.Printf("Unable to read: %v", move)
+		}
+	}
+
+	fmt.Printf("Example simple sub result: 150 == %v\n", testSimpleSub.GetDepth()*testSimpleSub.GetPosition())
+	fmt.Printf("Example sub result       : 900 == %v\n", testSub.GetDepth()*testSub.GetPosition())
 }
 
-func partTwo() {
-	fmt.Println("Part 2")
+func partOne(input []string) {
+
+	sub := sub.NewSimpleSub()
+
+	for _, line := range input {
+		move, dist := utils.SingleLineToStringInt(line)
+
+		switch move {
+		case "up":
+			sub.Rise(dist)
+		case "down":
+			sub.Dive(dist)
+		case "forward":
+			sub.Forward(dist)
+		default:
+			fmt.Printf("Unable to read: %v", move)
+		}
+	}
+
+	fmt.Printf("Part One Answer: %v\n", sub.GetDepth()*sub.GetPosition())
+}
+
+func partTwo(input []string) {
+
+	sub := sub.NewSub()
+
+	for _, line := range input {
+		move, dist := utils.SingleLineToStringInt(line)
+
+		switch move {
+		case "up":
+			sub.AimUp(dist)
+		case "down":
+			sub.AimDown(dist)
+		case "forward":
+			sub.Forward(dist)
+		default:
+			fmt.Printf("Unable to read: %v", move)
+		}
+	}
+
+	fmt.Printf("Part Two Answer: %v\n", sub.GetDepth()*sub.GetPosition())
 }

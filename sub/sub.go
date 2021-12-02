@@ -1,28 +1,48 @@
 package sub
 
-// count the number of increases in depth of sonar readings
-// allows for sliding window size defined by the arg window
-func CountDepthIncreases(sonar []int, window int) (count int) {
-	count = 0
-	last := sumWindow(sonar, 0, window)
-
-	for i := 1; i < len(sonar)-window+1; i++ {
-		currWindow := sumWindow(sonar, i, window)
-		if currWindow > last {
-			count++
-		}
-		last = currWindow
-	}
-
-	return count
+// Submarine is the ship we're piloting throughout the event
+// variants (i.e. old versions of the sub) will be properly named
+// and placed into other files so that we maintain this as the
+// current sub
+type Submarine struct {
+	depth    int
+	position int
+	aim      int
 }
 
-// given a set of sonar readings, sum the window of size count starting
-// at location idx
-func sumWindow(sonar []int, idx int, count int) int {
-	sum := 0
-	for i := idx; i < idx+count; i++ {
-		sum += sonar[i]
-	}
-	return sum
+func NewSub() *Submarine {
+	return &Submarine{depth: 0, position: 0, aim: 0}
+}
+
+//
+// MOVEMENT FUNCS
+//
+
+func (s *Submarine) AimDown(deg int) {
+	s.aim += deg
+}
+
+func (s *Submarine) AimUp(deg int) {
+	s.aim -= deg
+}
+
+func (s *Submarine) Forward(dist int) {
+	s.position += dist
+	s.depth += s.aim * dist
+}
+
+//
+// GETTERS
+//
+
+func (s *Submarine) GetDepth() int {
+	return s.depth
+}
+
+func (s *Submarine) GetPosition() int {
+	return s.position
+}
+
+func (s *Submarine) GetAim() int {
+	return s.aim
 }
