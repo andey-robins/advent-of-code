@@ -1,4 +1,4 @@
-package dayX
+package dayFour
 
 import (
 	"fmt"
@@ -9,7 +9,7 @@ import (
 func Run() {
 	test()
 
-	input := utils.ReadFile("./dayX/input.txt")
+	input := utils.ReadFile("./dayFour/input.txt")
 
 	one := PartOne(input)
 	two := PartTwo(input)

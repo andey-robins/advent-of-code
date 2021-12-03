@@ -4,7 +4,9 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/andey-robins/advent-of-code/dayFour"
 	"github.com/andey-robins/advent-of-code/dayOne"
+	"github.com/andey-robins/advent-of-code/dayThree"
 	"github.com/andey-robins/advent-of-code/dayTwo"
 )
 
@@ -21,5 +23,9 @@ func main() {
 		dayOne.Run()
 	case 2:
 		dayTwo.Run()
+	case 3:
+		dayThree.Run()
+	case 4:
+		dayFour.Run()
 	}
 }

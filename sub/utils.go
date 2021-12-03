@@ -26,3 +26,42 @@ func sumWindow(sonar []int, idx int, count int) int {
 	}
 	return sum
 }
+
+// given a list of error codes, and a decision to remove codes with a zero
+// or one at position pos, return a new set of codes following the given
+// ruleset
+func removeAtPos(lines []string, removeOnes bool, pos int) []string {
+	res := make([]string, 0)
+
+	for _, line := range lines {
+		if removeOnes {
+			if line[pos] == '0' {
+				res = append(res, line)
+			}
+		} else {
+			if line[pos] == '1' {
+				res = append(res, line)
+			}
+		}
+	}
+
+	return res
+}
+
+// return the count of the number of 1s and 0s at each position for
+// a set of error codes. if the number at index i is positive, there
+// are more 1s than 0s. if it's negative, then the opposite
+func getErrorCodeCounts(input []string, size int) []int {
+	counters := make([]int, size)
+
+	for _, line := range input {
+		for i, n := range line {
+			if n == '1' {
+				counters[i]++
+			} else {
+				counters[i]--
+			}
+		}
+	}
+	return counters
+}
