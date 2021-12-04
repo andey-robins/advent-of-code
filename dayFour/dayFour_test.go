@@ -9,16 +9,16 @@ import (
 
 func TestPartOne(t *testing.T) {
 	input := utils.ReadFile("./input.txt")
-	v := dayFour.PartOne(input)
-	if v != 1111 {
+	v, err := dayFour.PartOne(input)
+	if v != 38913 || err != nil {
 		t.FailNow()
 	}
 }
 
 func TestPartTwo(t *testing.T) {
 	input := utils.ReadFile("./input.txt")
-	v := dayFour.PartTwo(input)
-	if v != 2222 {
+	v, err := dayFour.PartTwo(input)
+	if v != 16836 || err != nil {
 		t.FailNow()
 	}
 }

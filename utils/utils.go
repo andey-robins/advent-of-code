@@ -64,3 +64,13 @@ func SingleLineToStringInt(line string) (string, int) {
 
 	return s, i
 }
+
+func BingoPullsStringToInt(pullStrings []string) []int {
+	pulls := make([]int, 0)
+	for _, pull := range pullStrings {
+		p, err := strconv.Atoi(pull)
+		Check(err)
+		pulls = append(pulls, p)
+	}
+	return pulls
+}

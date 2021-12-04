@@ -1,14 +1,15 @@
-package dayX_test
+package dayFive_test
 
 import (
 	"testing"
 
+	"github.com/andey-robins/advent-of-code/dayFive"
 	"github.com/andey-robins/advent-of-code/utils"
 )
 
 func TestTestOne(t *testing.T) {
 	input := utils.ReadFile("./input.txt")
-	v := dayX.TestOne(input)
+	v := dayFive.TestOne(input)
 	if v != 1 {
 		t.FailNow()
 	}
@@ -16,7 +17,7 @@ func TestTestOne(t *testing.T) {
 
 func TestTestTwo(t *testing.T) {
 	input := utils.ReadFile("./input.txt")
-	v := dayX.TestTwo(input)
+	v := dayFive.TestTwo(input)
 	if v != 2 {
 		t.FailNow()
 	}
@@ -24,7 +25,7 @@ func TestTestTwo(t *testing.T) {
 
 func TestPartOne(t *testing.T) {
 	input := utils.ReadFile("./input.txt")
-	v := dayX.PartOne(input)
+	v := dayFive.PartOne(input)
 	if v != 1 {
 		t.FailNow()
 	}
@@ -32,7 +33,7 @@ func TestPartOne(t *testing.T) {
 
 func TestPartTwo(t *testing.T) {
 	input := utils.ReadFile("./input.txt")
-	v := dayX.PartTwo(input)
+	v := dayFive.PartTwo(input)
 	if v != 2 {
 		t.FailNow()
 	}
