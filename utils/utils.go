@@ -74,3 +74,43 @@ func BingoPullsStringToInt(pullStrings []string) []int {
 	}
 	return pulls
 }
+
+type Line struct {
+	Xs []int
+	Ys []int
+}
+
+func VentsReadCoords(ventStrings []string) []Line {
+	lines := make([]Line, 0)
+
+	for _, line := range ventStrings {
+		coordPair := strings.Split(line, "->")
+		newLine := Line{}
+		for _, pair := range coordPair {
+			nums := strings.Split(pair, ",")
+			x, err := strconv.Atoi(strings.TrimSpace(nums[0]))
+			Check(err)
+			y, err := strconv.Atoi(strings.TrimSpace(nums[1]))
+			Check(err)
+			newLine.Xs = append(newLine.Xs, x)
+			newLine.Ys = append(newLine.Ys, y)
+		}
+		lines = append(lines, newLine)
+	}
+	return lines
+}
+
+func GetMaxSize(lines []Line) int {
+	max := 0
+	for _, line := range lines {
+		for i := 0; i < 2; i++ {
+			if line.Xs[i] > max {
+				max = line.Xs[i]
+			}
+			if line.Ys[i] > max {
+				max = line.Ys[i]
+			}
+		}
+	}
+	return max
+}

@@ -8,17 +8,17 @@ import (
 )
 
 func TestTestOne(t *testing.T) {
-	input := utils.ReadFile("./input.txt")
-	v := dayFive.TestOne(input)
-	if v != 1 {
+	input := utils.ReadFile("./example.txt")
+	v := dayFive.PartOne(input)
+	if v != 5 {
 		t.FailNow()
 	}
 }
 
 func TestTestTwo(t *testing.T) {
-	input := utils.ReadFile("./input.txt")
-	v := dayFive.TestTwo(input)
-	if v != 2 {
+	input := utils.ReadFile("./example.txt")
+	v := dayFive.PartTwo(input)
+	if v != 12 {
 		t.FailNow()
 	}
 }
@@ -26,7 +26,7 @@ func TestTestTwo(t *testing.T) {
 func TestPartOne(t *testing.T) {
 	input := utils.ReadFile("./input.txt")
 	v := dayFive.PartOne(input)
-	if v != 1 {
+	if v != 6461 {
 		t.FailNow()
 	}
 }
@@ -34,7 +34,7 @@ func TestPartOne(t *testing.T) {
 func TestPartTwo(t *testing.T) {
 	input := utils.ReadFile("./input.txt")
 	v := dayFive.PartTwo(input)
-	if v != 2 {
+	if v != 18065 {
 		t.FailNow()
 	}
 }
