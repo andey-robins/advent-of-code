@@ -7,6 +7,7 @@ import (
 	"github.com/andey-robins/advent-of-code/dayFive"
 	"github.com/andey-robins/advent-of-code/dayFour"
 	"github.com/andey-robins/advent-of-code/dayOne"
+	"github.com/andey-robins/advent-of-code/daySix"
 	"github.com/andey-robins/advent-of-code/dayThree"
 	"github.com/andey-robins/advent-of-code/dayTwo"
 )
@@ -30,5 +31,7 @@ func main() {
 		dayFour.Run()
 	case 5:
 		dayFive.Run()
+	case 6:
+		daySix.Run()
 	}
 }
